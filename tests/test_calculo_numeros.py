@@ -14,3 +14,11 @@ class TestCalculoNumeros(unittest.TestCase):
         # Caso en el que la entrada es negativa; se espera que se lance la excepción personalizada
         with self.assertRaises(NumeroDebeSerPositivo):
             ingrese_numero()
+    @patch('builtins.input', return_value='AAA')
+    def test_ingreso_letras(self, patch_input):
+        # Caso en el que la entrada no es numérica; se espera que se lance un ValueError
+        with self.assertRaises(ValueError):
+            ingrese_numero()
+
+if __name__ == '__main__':
+    unittest.main()
